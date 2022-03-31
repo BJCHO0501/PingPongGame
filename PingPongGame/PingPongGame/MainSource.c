@@ -36,8 +36,8 @@ int bx = 40, by = 10, bintx = 0, binty = 0, bflx, bfly; //bx와 by는 공의 기준점
 int nowp1y = 7, nowp2y = 7;
 int p1score = 0, p2score = 0;
 int scox = 39, scoy = 2; //스코어 위치
-int doublex = 37, doubley = 3, DoublePlayer = 0;
-int sgame, GameCounter = 0;
+int doublex = 38, doubley = 3, DoublePlayer = 0;
+int sgame = 0, GameCounter = 0;
 
 void textcolor(int foreground, int background)
 {
@@ -109,13 +109,14 @@ void PrintDouble(int x, int y, int team) {
 	gotoxy(x, y);
 	if (team == 1) {
 		textcolor(RED, BLACK);
+		printf("+2");
 		DoublePlayer = 1;
 	}
 	else if (team == 2) {
 		textcolor(BLUE, BLACK);
+		printf("     +2");
 		DoublePlayer = 2;
 	}
-	printf("다음턴 2배");
 	textcolor(WHITE, BLACK);
 }
 
@@ -228,7 +229,21 @@ void mainmove() {
 			mainprint();
 		}
 	}
-	Sleep(20);
+	Sleep(23);
+}
+
+void menuPrintf() {
+	system("mode con:cols=40 lines=30");
+	system("title Menu");
+	system("cls");
+	gotoxy(14, 8);
+	printf("PING PONG GAME");
+	
+	Sleep(5000);
+}
+
+void mainmenu() {
+	menuPrintf();
 }
 
 int main() {
